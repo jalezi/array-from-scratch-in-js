@@ -22,12 +22,12 @@ Array2.prototype.pop = function () {
   const lastItem = this.data[this.lastKey()];
   let newObj = {};
 
-  for (let i = 0; i < Number(this.lastKey() + 1); i++) {
-    const newItem = this.data[i.toString()];
-    if (newItem !== lastItem) newObj[i] = newItem;
+  for (let i = 0; i < Number(this.lastKey()); i++) {
+    const key = i.toString();
+    const value = this.data[i.toString()];
+    newObj = { ...newObj, [key]: value };
   }
   this.data = newObj;
-  this.length = this.length();
   return lastItem;
 };
 
