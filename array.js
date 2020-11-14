@@ -19,7 +19,8 @@ Array2.prototype.lastKey = function () {
 Array2.prototype.push = function (item) {
   const key = (this.lastKey() < 0 ? 0 : this.lastKey() + 1).toString();
   this.data = { ...this.data, [key]: item };
-  return this.len();
+  this.length = this.len();
+  return this.length;
 };
 
 Array2.prototype.pop = function () {
@@ -32,6 +33,7 @@ Array2.prototype.pop = function () {
     newObj = { ...newObj, [key]: value };
   }
   this.data = newObj;
+  this.length = this.len();
   return lastItem;
 };
 
