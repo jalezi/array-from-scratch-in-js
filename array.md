@@ -18,7 +18,7 @@ Array.prototype.concat()
 
 Array.prototype.copyWithin()
 
-Array.prototype.entries()
+**Array.prototype.entries()**
 
 Array.prototype.every()
 

@@ -3,7 +3,7 @@ function Array2() {
   this.length = this.len();
 }
 
-// TODO
+// TODO from method
 Array2.from = function () {};
 
 Array2.isArray = function (obj) {
@@ -44,15 +44,34 @@ Array2.prototype.toString = function () {
   return Object.values(this.data).toString();
 };
 
-Array2.prototype.keys = function* () {
-  let res;
-  for (value of Object.keys(this.data)) {
-    res = yield value;
-  }
-  return res;
+// keys
+Array2.prototype.keys = function () {
+  return Object.keys(this.data);
 };
 
-Array2.prototype.values = function* () {
+Array2.prototype.keys[Symbol.iterator] = function () {
+  return this.keys();
+};
+
+// values
+Array2.prototype.values = function () {
+  return Object.values(this.data);
+};
+
+Array2.prototype.values[Symbol.iterator] = function () {
+  return this.values();
+};
+
+// entries
+Array2.prototype.entries = function () {
+  return Object.entries(this.data);
+};
+
+Array2.prototype.entries[Symbol.iterator] = function () {
+  return this.entries();
+};
+// iterator
+Array2.prototype[Symbol.iterator] = function* () {
   let res;
   for (value of Object.values(this.data)) {
     res = yield value;
@@ -60,11 +79,9 @@ Array2.prototype.values = function* () {
   return res;
 };
 
-Array2.prototype[Symbol.iterator] = function () {
-  return this.values();
-};
+redefinedArray = new Array2();
+redefinedArray.push('item 1');
+redefinedArray.push('item 2');
+redefinedArray.push('item 3');
 
-a = new Array2();
-a.push('item 1');
-a.push('item 2');
-a.push('item 3');
+const nativeArray = [1, 2, 3, 4];
