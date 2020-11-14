@@ -3,6 +3,10 @@ function Array2() {
   this.length = this.len();
 }
 
+Array2.isArray = function (obj) {
+  return obj instanceof Array2;
+};
+
 Array2.prototype.len = function () {
   const isInfinite = !isFinite(this.lastKey());
   return isInfinite ? 0 : this.lastKey() + 1;
@@ -29,6 +33,19 @@ Array2.prototype.pop = function () {
   }
   this.data = newObj;
   return lastItem;
+};
+
+Array2.prototype.toString = function () {
+  return Object.values(this.data).toString();
+};
+
+Array2.prototype.values = function* () {
+  let iterationCount = 0;
+  for (let i = 0; i < this.length + 1; i++) {
+    iterationCount++;
+    yield this.data[i];
+  }
+  return this.data[i];
 };
 
 a = new Array2();
