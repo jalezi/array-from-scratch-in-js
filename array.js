@@ -1,10 +1,11 @@
 function Array2() {
   this.data = {};
-  this.length = this.lastKey();
+  this.length = this.len();
 }
 
-Array2.prototype.length = function () {
-  return this.lastKey() + 1;
+Array2.prototype.len = function () {
+  const isInfinite = !isFinite(this.lastKey());
+  return isInfinite ? 0 : this.lastKey() + 1;
 };
 
 Array2.prototype.lastKey = function () {
