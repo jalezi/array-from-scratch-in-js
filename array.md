@@ -42,7 +42,7 @@ Array.prototype.indexOf()
 
 Array.prototype.join()
 
-Array.prototype.keys()
+**Array.prototype.keys()**
 
 Array.prototype.lastIndexOf()
 
@@ -78,6 +78,6 @@ Array.prototype.unshift()
 
 **Array.prototype.values()**
 
-Array.prototype[@@iterator]()
+**Array.prototype[@@iterator]()**
 
 get Array[@@species]
