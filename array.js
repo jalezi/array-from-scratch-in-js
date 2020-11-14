@@ -3,6 +3,9 @@ function Array2() {
   this.length = this.len();
 }
 
+// TODO
+Array2.from = function () {};
+
 Array2.isArray = function (obj) {
   return obj instanceof Array2;
 };
@@ -41,17 +44,27 @@ Array2.prototype.toString = function () {
   return Object.values(this.data).toString();
 };
 
-Array2.prototype.values = function* () {
-  let iterationCount = 0;
-  for (let i = 0; i < this.length + 1; i++) {
-    iterationCount++;
-    yield this.data[i];
+Array2.prototype.keys = function* () {
+  let res;
+  for (value of Object.keys(this.data)) {
+    res = yield value;
   }
-  return this.data[i];
+  return res;
+};
+
+Array2.prototype.values = function* () {
+  let res;
+  for (value of Object.values(this.data)) {
+    res = yield value;
+  }
+  return res;
+};
+
+Array2.prototype[Symbol.iterator] = function () {
+  return this.values();
 };
 
 a = new Array2();
 a.push('item 1');
 a.push('item 2');
 a.push('item 3');
-a.pop();
